@@ -1,0 +1,385 @@
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Concert One', cursive;
+}
+
+header {
+    background-color: #77cab3;
+    color: white;
+}
+
+h1 {
+    font-size: 2em;
+    text-shadow: 2px 2px 5px grey;
+}
+
+div.wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Hide menu */
+#menu_toggle {
+    opacity: 0;
+}
+
+.menu_btn {
+    display: flex;
+    align-items: center;
+    position: relative;
+    top: 15px;
+    left: 20px;
+    width: 26px;
+    height: 26px;
+    cursor: pointer;
+    z-index: 2;
+}
+
+/* add hamburger */
+.menu_btn>span,
+.menu_btn>span::before,
+.menu_btn>span::after {
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 2px;
+    background-color: white;
+    transition: all 0.3s ease-in;
+}
+
+.menu_btn>span::before {
+    content: '';
+    top: -8px;
+}
+
+.menu_btn>span::after {
+    content: '';
+    top: 8px;
+}
+
+.menu_container {
+    display: block;
+    position: fixed;
+    visibility: hidden;
+     z-index: 1; 
+    top: 0;
+    left: -100%;
+    width: 300px;
+    height: 100%;
+    margin: 0;
+    padding: 80px 0;
+    list-style: none;
+    text-align: center;
+    background-color: #eda9a9;
+    box-shadow: 1px 0px 6px rgba(0, 0, 0, .2);
+}
+
+.menu_item {
+    display: block;
+    padding: 12px 24px;
+    color: white;
+    font-family: 'Concert One', cursive;
+    font-size: 30px;
+    font-weight: 600;
+    text-decoration: none;
+    text-shadow: 2px 2px 5px grey;
+}
+
+.menu_item:hover {
+    background-color: #fdfb62;
+
+}
+
+#menu_toggle:checked~.menu_btn>span {
+    transform: rotate(45deg);
+}
+
+#menu_toggle:checked~.menu_btn>span::before {
+    top: 0;
+    transform: rotate(0);
+}
+
+#menu_toggle:checked~.menu_btn>span::after {
+    top: 0;
+    transform: rotate(90deg);
+}
+
+#menu_toggle:checked~.menu_container {
+    visibility: visible;
+    left: 0;
+    transition: 1s;
+}
+.hidden{
+    visibility: hidden;
+    left: 0;
+}
+/*CHECKBOX*/
+
+#toggle_checkbox {
+    display: none;
+}
+
+label[for=toggle_checkbox] {
+    display: inline-block;
+    position: relative;
+    top: 50%;
+    right: 0;
+    left: 0;
+    width: 116px;
+    height: 45px;
+    margin: 0 auto;
+    background-color: #7eaa9e;
+    border-radius: 56px;
+    transform: translateY(-50%);
+    cursor: pointer;
+    transition: 0.3s ease background-color;
+    overflow: hidden;
+}
+
+#star {
+    position: absolute;
+    top: 8px;
+    left: 13px;
+    transition: 0.3s ease top, 0.3s ease left, 0.3s ease transform, 0.3s ease background-color;
+    z-index: 1;
+}
+
+#star-1 {
+    position: relative;
+}
+
+#star-2 {
+    position: absolute;
+    transform: rotateZ(36deg);
+}
+
+.star {
+    top: 0;
+    left: -7px;
+    font-size: 40px;
+    line-height: 28px;
+    color: pink;
+    transition: 0.3s ease color;
+}
+
+#toggle_checkbox:checked+label {
+    background-color: #f8fbffa6;
+}
+
+#toggle_checkbox:checked+label #star {
+    top: 8px;
+    left: 74px;
+}
+
+#toggle_checkbox:checked+label .star {
+    color: #f9fd0fe8;
+    font-size: 54px;
+}
+#toggle_checkbox:checked+label p.train {
+    display: none;
+}
+
+#toggle_checkbox:checked+label p.play {
+    display: block;
+}
+label[for=toggle_checkbox]:hover {
+    background-color: #577970;
+}
+
+#toggle_checkbox:checked+label[for=toggle_checkbox]:hover {
+    background-color: #74948b;
+}
+
+p.train {
+    position: absolute;
+    left: 50px;
+    font-size: 18px;
+    top: -7px;
+    text-shadow: 2px 2px 5px grey;
+}
+
+p.play {
+    display: none;
+    position: absolute;
+    left: 20px;
+    top: -7px;
+    font-size: 18px;
+    text-shadow: 2px 2px 5px grey;
+}
+
+
+
+/*Cards styling*/
+.card_wrapper {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-left: 5%;
+    margin-right: 5%;
+}
+
+.card_container {
+    width: 300px;
+    height: 300px;
+}
+
+.card {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s;
+    transform-style: preserve-3d;
+}
+
+.card_front,
+.card_back{
+    position: absolute;
+    margin: 20px;
+    width: 260px;
+    height: 280px;
+    box-shadow: 1px 1px 10px black;
+    border-radius: 10%;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}
+.card.is_flipped {
+    transform: rotateY(180deg);
+}
+
+.card_back {
+    transform: rotateY(180deg);
+}
+
+.card_name_front,
+.card_name_back,
+.card_name_main_page {
+    font-size: 1.7em;
+    text-align: center;
+}
+.main_card_img{
+    width: inherit;
+    height: 85%;
+    border-radius: 50%;
+    object-fit: cover;
+  
+}
+
+.card_rotate {
+    background: url(img/exchange.svg);
+    width: 20px;
+    height: 20px;
+    background-size: contain;
+    display: inline-block;
+    left: 65px;
+    position: relative;
+    opacity: 0.4;
+}
+
+.card_rotate:hover {
+    opacity: 1;
+}
+
+img {
+    width: inherit;
+    height: 85%;
+    object-fit: cover;
+    border-radius: 10% 10% 0 0;
+}
+
+.translation {
+    transform: rotateY(180deg);
+}
+
+.start_game, .repeat_word{
+    margin: auto;
+    margin-top: 2%;
+    width: 15%;
+    padding: 1%;
+    border-radius: 5%;
+    text-align: center;
+    background-color: #77cab3;
+    color: white;
+    font-size: 22px;
+    text-shadow: 2px 2px 5px grey;
+    cursor: pointer;
+ }
+.start_game:hover {
+    background-color: #577970;
+}
+.repeat_word{
+    background-image: url(img/repeat.svg);
+    background-repeat: no-repeat;
+    width: fit-content;
+    padding: 2%;
+    border-radius: 10%;
+}
+.opacity_style{
+    opacity: 0.4;
+}
+.correct_icon{
+    background-image: url(img/correct_answer.jpg);
+}
+.wrong_icon {
+    background-image: url(img/wrong_answer.jpg);
+    opacity: 0.3;
+}
+.correct_icon, .wrong_icon{
+    display: inline-block;
+    margin: 1%;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+.ratingDiv{
+    max-width: 390px;
+    position: relative;
+    margin: auto;
+    margin-top: 2%;
+}
+.statistics_row:nth-child(even) {
+    background:#b7e2d6;
+}
+.statistics_wrapper, table{
+    width: 100%;
+}
+footer{
+    display: flex;
+    flex-direction: row-reverse;
+}
+
+.logo{
+display: inline-flex;
+}
+.logo_rsschool{
+    width: 70px;
+    object-fit: contain;
+}
+.logo_github{
+    width: 30px;
+    margin-right: 5px;
+    object-fit: contain;
+}
+/*Adaptivity*/
+@media screen and (max-width:450px) {
+    h1 {
+        display: none;
+    }
+
+    .menu_btn {
+        top:-10px;
+    }
+    th{
+        font-size: 0.8rem;
+    }
+    td{
+        font-size: 0.45rem; 
+    }
+}
